@@ -1,0 +1,10 @@
+package pt.estgp.es.spring.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import pt.estgp.es.spring.domain.Exercicio;
+import java.util.List;
+
+public interface ExercicioRepository extends JpaRepository<Exercicio, Long> {
+    // Para listar exercícios de uma UC específica
+    List<Exercicio> findByUnidadeCurricularId(Long ucId);
+}

@@ -1,0 +1,1 @@
+public interface EtapaProgressoRepository extends JpaRepository<EtapaProgresso, Long> { }

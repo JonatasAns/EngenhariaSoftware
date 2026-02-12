@@ -1,0 +1,9 @@
+package pt.estgp.es.spring.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import pt.estgp.es.spring.domain.UnidadeCurricular;
+
+public interface UnidadeCurricularRepository extends JpaRepository<UnidadeCurricular, Long> {
+    // Aqui podes adicionar buscas personalizadas, ex: por código da UC
+    UnidadeCurricular findByCodigo(String codigo);
+}
