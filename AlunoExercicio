@@ -1,0 +1,37 @@
+package pt.estgp.es.spring.domain;
+
+import jakarta.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+public class AlunoExercicio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private Aluno aluno;
+
+    @ManyToOne
+    private Exercicio exercicio;
+
+    private boolean terminado;
+    private Double nota;
+    private boolean chamarDocente;
+    private String mensagemChamada;
+    private Date dataEntrada;
+
+    @OneToMany(mappedBy = "alunoExercicio", cascade = CascadeType.ALL)
+    private List<EtapaProgresso> progressos;
+
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public boolean isTerminado() { return terminado; }
+    public void setTerminado(boolean terminado) { this.terminado = terminado; }
+    public Double getNota() { return nota; }
+    public void setNota(Double nota) { this.nota = nota; }
+    public boolean isChamarDocente() { return chamarDocente; }
+    public void setChamarDocente(boolean chamarDocente) { this.chamarDocente = chamarDocente; }
+}

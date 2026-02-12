@@ -1,0 +1,31 @@
+package pt.estgp.es.spring.domain;
+
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
+public class UnidadeCurricular {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String codigo;
+    private String anoLetivo;
+
+    @ManyToMany
+    @JoinTable(name = "uc_docentes")
+    private List<Docente> docentes;
+
+    @OneToMany(mappedBy = "unidadeCurricular")
+    private List<Exercicio> exercicios;
+
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getCodigo() { return codigo; }
+    public void setCodigo(String codigo) { this.codigo = codigo; }
+    public String getAnoLetivo() { return anoLetivo; }
+    public void setAnoLetivo(String anoLetivo) { this.anoLetivo = anoLetivo; }
+}

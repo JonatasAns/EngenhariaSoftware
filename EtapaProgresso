@@ -1,0 +1,26 @@
+package pt.estgp.es.spring.domain;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+public class EtapaProgresso {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private AlunoExercicio alunoExercicio;
+
+    @ManyToOne
+    private Etapa etapa;
+
+    private boolean concluida;
+    private Date dataConclusao;
+
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public boolean isConcluida() { return concluida; }
+    public void setConcluida(boolean concluida) { this.concluida = concluida; }
+}

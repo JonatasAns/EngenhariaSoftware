@@ -1,0 +1,33 @@
+package pt.estgp.es.spring.domain;
+
+import jakarta.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+public class Exercicio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String titulo;
+    private String descricao;
+    private Date dataInicio;
+    private boolean estado; // true = ativo
+
+    @ManyToOne
+    private UnidadeCurricular unidadeCurricular;
+
+    @OneToMany(mappedBy = "exercicio", cascade = CascadeType.ALL)
+    @OrderBy("ordem ASC")
+    private List<Etapa> etapas;
+
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+    public boolean isEstado() { return estado; }
+    public void setEstado(boolean estado) { this.estado = estado; }
+}
