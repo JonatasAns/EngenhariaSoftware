@@ -1,0 +1,13 @@
+package pt.estgp.es.spring.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import pt.estgp.es.spring.domain.AlunoExercicio;
+import java.util.List;
+
+public interface AlunoExercicioRepository extends JpaRepository<AlunoExercicio, Long> {
+    // Para o docente ver todos os alunos num exercício (barra de progresso)
+    List<AlunoExercicio> findByExercicioId(Long exercicioId);
+    
+    // Para ver se um aluno já iniciou um exercício específico
+    AlunoExercicio findByAlunoIdAndExercicioId(Long alunoId, Long exercicioId);
+}
